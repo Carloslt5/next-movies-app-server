@@ -1,6 +1,16 @@
-const getAllMovies = (req, res, next) => {
+const Movie = require("../models/Movie.models")
 
-    res.status(200).json('getAllMovies')
+
+const getAllMovies = async (req, res, next) => {
+    Movie
+        .find()
+        .limit(1)
+        .then(response => {
+            console.log('datos', response)
+        })
+        .catch(err => {
+            console.log(err)
+        })
 
 }
 
@@ -8,3 +18,4 @@ const getAllMovies = (req, res, next) => {
 module.exports = {
     getAllMovies
 }
+
