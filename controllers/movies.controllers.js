@@ -2,15 +2,13 @@ const Movie = require("../models/Movie.models")
 
 
 const getAllMovies = async (req, res, next) => {
-    Movie
-        .find()
-        .limit(1)
-        .then(response => {
-            console.log('datos', response)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+
+    try {
+        const movie = await Movie.find().limit(10).sort({ title: 1 })
+        return res.status(200).json(movie);
+    } catch (error) {
+        return res.status(400).json({ success: false, error });
+    }
 
 }
 
