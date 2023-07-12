@@ -31,9 +31,9 @@ const movieSchema = new Schema(
                 }
             }
         },
-        directors: {
+        directors: [{
             type: String
-        },
+        }],
         rated: {
             type: String
         },
