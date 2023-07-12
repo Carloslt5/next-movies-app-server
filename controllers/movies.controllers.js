@@ -12,8 +12,22 @@ const getAllMovies = async (req, res, next) => {
 
 }
 
+const getOneMovie = async (req, res, next) => {
+
+    const { id } = req.params
+
+    try {
+        const movie = await Movie.findById(id)
+        return res.status(200).json(movie);
+    } catch (error) {
+        return res.status(400).json({ success: false, error });
+    }
+
+}
+
 
 module.exports = {
-    getAllMovies
+    getAllMovies,
+    getOneMovie
 }
 
