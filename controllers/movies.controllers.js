@@ -3,12 +3,9 @@ const Movie = require("../models/Movie.models")
 const getMovies = async (req, res, next) => {
 
     let { limit, skip } = req.query
-
     limit = limit ?? 10
     skip = skip ?? 0
 
-
-    console.log({ limit, skip })
     try {
         const movie = await Movie.find().skip(skip).limit(limit).sort({ title: 1 })
         return res.status(200).json(movie);
